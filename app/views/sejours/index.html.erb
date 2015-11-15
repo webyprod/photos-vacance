@@ -35,4 +35,4 @@
 
 <br>
 
-<%= link_to 'Nouveau séjour', new_sejour_path %>
+<%= will_paginate @sejours, renderer: BootstrapPagination::Rails %>

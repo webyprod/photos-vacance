@@ -6,7 +6,7 @@ class SejoursController < ApplicationController
   # GET /sejours
   # GET /sejours.json
   def index
-    @sejours = Sejour.all
+    @sejours = Sejour.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 2)
   end
 
   # GET /sejours/1
