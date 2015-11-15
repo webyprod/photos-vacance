@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar{
+  background-color:rgb(0,102,102);
+  font-weight:bold;
+  border-radius:0px;
+  font-family:"courier new";
+  font-size: 20px;
+}
