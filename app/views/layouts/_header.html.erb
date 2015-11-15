@@ -8,7 +8,9 @@
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
+   <li><%= link_to "Liste sejours", sejours_path %></li>
    <% if user_signed_in? %>
+      <li><%= link_to "Ajouter un sejour", new_sejour_path %></li>
       <li><%= link_to "Modifier le profil", edit_user_registration_path %></li>
       <li><%= link_to "Deconnexion", destroy_user_session_path, method: :delete %></li>
    <% else %>

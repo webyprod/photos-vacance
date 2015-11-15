@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sejours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lieu</th>
+      <th>Description</th>
+      <th>Note</th>
+      <th>Recommandation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sejours.each do |sejour| %>
+      <tr>
+        <td><%= sejour.lieu %></td>
+        <td><%= sejour.description %></td>
+        <td><%= sejour.note %></td>
+        <td><%= sejour.recommandation %></td>
+        <td><%= link_to 'Montrer', sejour %></td>
+        <td><%= link_to 'Modifier', edit_sejour_path(sejour) %></td>
+        <td><%= link_to 'Supprimer', sejour, method: :delete, data: { confirm: 'Etes vous sûr?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nouveau séjour', new_sejour_path %>

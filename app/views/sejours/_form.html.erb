@@ -1,0 +1,33 @@
+<%= form_for(@sejour) do |f| %>
+  <% if @sejour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sejour.errors.count, "error") %> prohibited this sejour from being saved:</h2>
+
+      <ul>
+      <% @sejour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :lieu %><br>
+    <%= f.text_field :lieu, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :note %><br>
+    <%= f.number_field :note %>
+  </div>
+  <div class="form-group">
+    <%= f.label :recommandation %><br>
+    <%= f.check_box :recommandation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

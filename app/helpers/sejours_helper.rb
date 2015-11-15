@@ -1,0 +1,2 @@
+module SejoursHelper
+end
