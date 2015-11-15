@@ -1,5 +1,7 @@
 class SejoursController < ApplicationController
   before_action :set_sejour, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /sejours
   # GET /sejours.json
@@ -24,11 +26,11 @@ class SejoursController < ApplicationController
   # POST /sejours
   # POST /sejours.json
   def create
-    @sejour = Sejour.new(sejour_params)
+    @sejour = current_user.sejours.build(sejour_params)
 
     respond_to do |format|
       if @sejour.save
-        format.html { redirect_to @sejour, notice: 'Sejour was successfully created.' }
+        format.html { redirect_to @sejour, notice: 'Le sejour a bien ete cree.' }
         format.json { render :show, status: :created, location: @sejour }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class SejoursController < ApplicationController
   def update
     respond_to do |format|
       if @sejour.update(sejour_params)
-        format.html { redirect_to @sejour, notice: 'Sejour was successfully updated.' }
+        format.html { redirect_to @sejour, notice: 'Sejour mis a jour.' }
         format.json { render :show, status: :ok, location: @sejour }
       else
         format.html { render :edit }
@@ -71,4 +73,6 @@ class SejoursController < ApplicationController
     def sejour_params
       params.require(:sejour).permit(:lieu, :description, :note, :recommandation)
     end
+    
+    
 end

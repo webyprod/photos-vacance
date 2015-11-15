@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Lieu:</strong>
-  <%= @sejour.lieu %>
-</p>
-
-<p>
+<div class="row">
+<div class="col-sm-12">
+  Ce sejour qui a eu lieu en
+  <%= @sejour.lieu %> a obtenu la note de : <%= @sejour.note %>.
+    <% if @sejour.recommandation == true %>
+  Il recommande fortement ce voyage
+  <% else %>
+  Il ne recommande pas ce voyage 
+  <% end %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-12">
   <strong>Description:</strong>
   <%= @sejour.description %>
-</p>
+  </div>
 
-<p>
-  <strong>Note:</strong>
-  <%= @sejour.note %>
-</p>
 
-<p>
-  <strong>Recommandation:</strong>
-  <%= @sejour.recommandation %>
-</p>
 
-<%= link_to 'Modifier', edit_sejour_path(@sejour) %> |
+<% if @sejour.user == current_user %>
+<%= link_to 'Modifier | ', edit_sejour_path(@sejour) %>
+<% end %>
 <%= link_to 'Retour', sejours_path %>
