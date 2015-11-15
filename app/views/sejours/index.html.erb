@@ -1,29 +1,37 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Sejours</h1>
-
-    <div class="panel panel-default">
     <% @sejours.each do |sejour| %>
+    <div class="row">
+    <div class="col-offset-3 col-sm-7">
+    <div class="panel panel-default">
 	<div class="panel-heading">
-        Lieu :<%= sejour.lieu %></div><br>
+        <%= sejour.lieu %></div>
         <div class="panel-body">
-        Description :<%= sejour.description %><br>
-        Note :<%= sejour.note %><br>
-        Le recommandez-vous ? <% if sejour.recommandation == true %>
+        <table class="table table-striped">
+        <tr>
+        <td>
+        Description :</td><td><%= sejour.description %></td></tr>
+        <tr>
+        <td>Note :</td><td><%= sejour.note %></td></tr>
+        <tr>
+        <td>Le recommandez-vous ? </td><td><% if sejour.recommandation == true %>
         Oui
         <% else %>
         Non
         <% end %>
+        </td></tr></table>
         </div>
         <div class="panel-footer">
         <%= link_to 'Montrer', sejour %><br>
         <% if sejour.user == current_user %>
-        <%= link_to 'Modifier', edit_sejour_path(sejour) %>
+        <%= link_to 'Modifier', edit_sejour_path(sejour) %><br>
         <%= link_to 'Supprimer', sejour, method: :delete, data: { confirm: 'Etes vous sûr?' } %>
         <% end %>
         </div>
-    <% end %>
     </div>
+    </div>
+    </div>
+    <% end %>
+    
 
 <br>
 
